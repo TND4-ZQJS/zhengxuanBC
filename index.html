@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>房正轩 中文词语复习测试</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial;
+      background-color: #f5f5f5;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #1d72b8;
+    }
+    .question {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    textarea, select, input[type="text"] {
+      width: 100%;
+      font-size: 16px;
+      padding: 6px;
+      margin-top: 4px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #1d72b8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .result, .answers {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .answers {
+      color: #cc0000;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>房正轩 中文词语复习测试（第21到30词）</h1>
+
+<form id="quizForm">
+
+<div class="question">
+  <h3>一、选择题：</h3>
+  <label>1. 他一听到要打针就 ______，怎么也不肯去。
+    <select name="q1">
+      <option value="">请选择</option>
+      <option value="抵挡">抵挡</option>
+      <option value="阻挡">阻挡</option>
+      <option value="对抗">对抗</option>
+    </select>
+  </label>
+
+  <label>2. 老师批改作业非常认真，______ 不马虎。
+    <select name="q2">
+      <option value="">请选择</option>
+      <option value="丝毫">丝毫</option>
+      <option value="趁早">趁早</option>
+      <option value="启示">启示</option>
+    </select>
+  </label>
+
+  <label>3. 乌云 ______ 了阳光，天一下子变暗了。
+    <select name="q3">
+      <option value="">请选择</option>
+      <option value="遮挡">遮挡</option>
+      <option value="阻挡">阻挡</option>
+      <option value="抵挡">抵挡</option>
+    </select>
+  </label>
+</div>
+
+<div class="question">
+  <h3>二、判断题：</h3>
+  <label>4. “不义而飞”是正确写法吗？
+    <select name="q4">
+      <option value="">请选择</option>
+      <option value="✅ 对">✅ 对</option>
+      <option value="❌ 错">❌ 错</option>
+    </select>
+  </label>
+
+  <label>5. “猛瘦”是形容动物很凶猛吗？
+    <select name="q5">
+      <option value="">请选择</option>
+      <option value="✅ 对">✅ 对</option>
+      <option value="❌ 错">❌ 错</option>
+    </select>
+  </label>
+</div>
+
+<div class="question">
+  <h3>三、拼音填词：</h3>
+  <label>6. kāi lǎng：<input type="text" name="q6"/></label>
+  <label>7. zhē dǎng：<input type="text" name="q7"/></label>
+  <label>8. sī háo：<input type="text" name="q8"/></label>
+</div>
+
+<div class="question">
+  <h3>四、连线题：</h3>
+  <label>A. 启示 是：
+    <select name="q9">
+      <option value="">请选择</option>
+      <option value="1">1. 非常凶猛的动物</option>
+      <option value="2">2. 得到的提醒或道理</option>
+      <option value="3">3. 阳光的性格</option>
+    </select>
+  </label>
+
+  <label>B. 开朗 是：
+    <select name="q10">
+      <option value="">请选择</option>
+      <option value="1">1. 非常凶猛的动物</option>
+      <option value="3">3. 阳光的性格</option>
+      <option value="5">5. 阻止别人前进</option>
+    </select>
+  </label>
+</div>
+
+<button type="button" onclick="gradeQuiz()">提交测试</button>
+<button type="button" onclick="showAnswers()">查看正确答案</button>
+<div class="result" id="result"></div>
+<div class="answers" id="answers" style="display:none;"></div>
+
+</form>
+
+<script>
+  function gradeQuiz() {
+    const form = document.forms['quizForm'];
+    let score = 0;
+    const total = 10;
+
+    const answers = {
+      q1: "抵挡",
+      q2: "丝毫",
+      q3: "遮挡",
+      q4: "❌ 错",
+      q5: "❌ 错",
+      q6: "开朗",
+      q7: "遮挡",
+      q8: "丝毫",
+      q9: "2",
+      q10: "3"
+    };
+
+    for (let key in answers) {
+      let userAnswer = form[key].value.trim();
+      if (userAnswer === answers[key]) {
+        score++;
+      }
+    }
+
+    document.getElementById('result').textContent = `你答对了 ${score} / ${total} 题，加油！`;
+  }
+
+  function showAnswers() {
+    const correctAnswers = `
+      ✅ 正确答案如下：<br><br>
+      1. 抵挡<br>
+      2. 丝毫<br>
+      3. 遮挡<br>
+      4. ❌ 错<br>
+      5. ❌ 错<br>
+      6. 开朗<br>
+      7. 遮挡<br>
+      8. 丝毫<br>
+      9. 启示 → 2<br>
+      10. 开朗 → 3<br>
+    `;
+    document.getElementById('answers').innerHTML = correctAnswers;
+    document.getElementById('answers').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
